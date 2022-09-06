@@ -15,10 +15,10 @@ document.body.appendChild( render.domElement );
 const textureLoader = new THREE.TextureLoader()
 const matcap = textureLoader.load('../img/metalizada.jpg')
 
-const cubeTextureLoader = new THREE.CubeTextureLoader()
-const evm = cubeTextureLoader.load([
-    "../img/.jpg"
-])
+// const cubeTextureLoader = new THREE.CubeTextureLoader()
+// const evm = cubeTextureLoader.load([
+//     "../img/.jpg"
+// ])
 
 
 
@@ -29,13 +29,18 @@ material.color.set('#ff0000')
 material.metalness = 1;
 material.roughness = 0;
 scene.background = new THREE.Color(0xeeeeee)
+//luz con dirección 
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1000)
+directionalLight.position.set(2, 4, 1)
+scene.add(directionalLight)
 
-const ambientaLLight = new THREE.AmbientLight(0xffffff,1)
-scene.add(ambientaLLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 2)
-scene.add(pointLight)
-pointLight.position.set(5, 5, 5)
+// const ambientaLLight = new THREE.AmbientLight(0xffffff,1)
+// scene.add(ambientaLLight);
+
+// const pointLight = new THREE.PointLight(0xffffff, 2)
+// scene.add(pointLight)
+// pointLight.position.set(5, 5, 5)
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
 const torusKnot = new THREE.Mesh( geometry, material );
@@ -61,5 +66,6 @@ function animate(){
     
 	render.render( scene, camara );
     scene.add( torusKnot );
+    
 }
 animate();
