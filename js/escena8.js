@@ -38,6 +38,11 @@ const edges = new THREE.EdgesGeometry( geometry );
 const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x3F2212 } ) );
 scene.add( line );
 
+//Orbit controls 
+// const control = new THREE.OrbitControls(camara, render.domElement)
+const object = [material13,line]
+const controls = new THREE.DragControls(object, camara, render.domElement)
+
 //animación 
 function animate(){
     requestAnimationFrame( animate );
